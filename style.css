@@ -19,25 +19,14 @@ img {
   height: 100%;
   object-fit: cover;
 }
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 2rem;
-  display: flex;
-  justify-content: start;
-  z-index: 2;
-}
-a,
+
+
 p {
   text-decoration: none;
   color: #fff;
   font: 14px;
 }
-.links {
-  display: flex;
-  gap: 2em;
-}
+
 .slider {
   width: 100vw;
   height: 100vh;
