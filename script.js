@@ -1,7 +1,28 @@
 let currentIndex = 0;
-let totalSlides = 5;
-let totalImages = 6;
-let slideImageOnClick = 100 / totalImages;
+
+let totleImages = document.querySelectorAll(".top-images img");
+let totalImagesLength = totleImages.length;
+let totalSlides = totalImagesLength - 1;
+let slideImageOnClick = 100 / totalImagesLength;
+
+
+let textTitle = document.querySelector(".slider-titles");
+let titleWidth = (100 / 3) * totalImagesLength;
+let titleWidthForScreen = 100 * totalImagesLength;
+
+function adjustTitleWidth() {
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth < 900) {
+    textTitle.style.width = `${titleWidthForScreen}vw`;
+  } else {
+    textTitle.style.width = `${titleWidth}vw`;
+  }
+}
+
+adjustTitleWidth();
+
+window.addEventListener("resize", adjustTitleWidth);
 
 const updateActiveSlide = () => {
   document.querySelectorAll(".title").forEach((el, index) => {
