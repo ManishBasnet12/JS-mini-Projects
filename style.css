@@ -18,8 +18,8 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(0.8);
 }
-
 
 p {
   text-decoration: none;
@@ -67,26 +67,26 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: all;
-  opacity: 0.6;
 }
-.img-top {
+.top-images {
   position: absolute;
   width: 100%;
   height: 100%;
   clip-path: polygon(85% 0%, 0% 0%, 0% 50%, 85% 50%);
   transition: clip-path 0.5s ease-out;
 }
-.img-bottom {
+.bottom-images {
   position: absolute;
   width: 100%;
   height: 100%;
   clip-path: polygon(100% 50%, 15% 50%, 15% 100%, 100% 100%);
   transition: clip-path 0.5s ease-out;
 }
-.slider-images:hover .img-top {
+
+.slider-images:hover .top-images {
   clip-path: polygon(90% 0%, 10% 0%, 10% 50%, 90% 50%);
 }
-.slider-images:hover .img-bottom {
+.slider-images:hover .bottom-images {
   clip-path: polygon(90% 50%, 10% 50%, 10% 100%, 90% 100%);
 }
 @media (max-width: 900px) {
@@ -105,12 +105,12 @@ p {
     width: 100%;
     height: 100%;
   }
-  .img-top,
-  .img-bottom {
+  .top-images,
+  .bottom-images {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
-  .slider-images:hover .img-top,
-  .slider-images:hover .img-bottom {
+  .slider-images:hover .top-images,
+  .slider-images:hover .bottom-images {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
 }

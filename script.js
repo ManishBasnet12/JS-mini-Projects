@@ -1,5 +1,7 @@
 let currentIndex = 0;
 let totalSlides = 8;
+let totalImages = 9;
+let slideImageOnClick = 100 / totalImages;
 
 const updateActiveSlide = () => {
   document.querySelectorAll(".title").forEach((el, index) => {
@@ -25,28 +27,53 @@ const handleSlider = () => {
       }, 100);
       updateImages(currentIndex + 1);
     },
-    x: `-${currentIndex * 11.1111}%`,
+    x: `-${currentIndex * slideImageOnClick}%`,
     duration: 1.75,
     ease: "power4.out",
   });
 };
 
 const updateImages = (imgNumber) => {
-  const imgSrc = `./images/img${imgNumber}.jpg`;
-  const imgTop = document.createElement("img");
-  const imgBottom = document.createElement("img");
+  const imgTop = document.querySelectorAll(".top-images img")[imgNumber - 1];
+  const imgBottom =
+    document.querySelectorAll(".bottom-images img")[imgNumber - 1];
 
-  imgTop.src = imgSrc;
-  imgBottom.src = imgSrc;
+  gsap.set(imgTop, {
+    clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
+    transform: "scale(2.5)",
+  });
 
-  imgTop.style.clipPath = "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)";
-  imgBottom.style.clipPath = "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)";
+  gsap.set(imgBottom, {
+    clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
+    transform: "scale(2.5)",
+  });
 
-  imgTop.style.transform = "scale(2.5)";
-  imgBottom.style.transform = "scale(2.5)";
+  const updateTopImageZindex = () => {
+    document.querySelectorAll(".top-images img").forEach((elem, i) => {
+      if (i === imgNumber - 1) {
+        elem.style.zIndex = "2";
+      } else if (i === imgNumber - 2) {
+        elem.style.zIndex = "1";
+      } else {
+        elem.style.zIndex = "0";
+      }
+    });
+  };
 
-  document.querySelector(".img-top").appendChild(imgTop);
-  document.querySelector(".img-bottom").appendChild(imgBottom);
+  const updateBottomImageZindex = () => {
+    document.querySelectorAll(".bottom-images img").forEach((elem, i) => {
+      if (i === imgNumber - 1) {
+        elem.style.zIndex = "2";
+      } else if (i === imgNumber - 2) {
+        elem.style.zIndex = "1";
+      } else {
+        elem.style.zIndex = "0";
+      }
+    });
+  };
+
+  updateTopImageZindex();
+  updateBottomImageZindex();
 
   gsap.to([imgTop, imgBottom], {
     clipPath: "polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%)",
@@ -54,23 +81,6 @@ const updateImages = (imgNumber) => {
     duration: 1.75,
     ease: "power4.out",
     stagger: 0.1,
-    onComplete: trimExcessImages,
-  });
-};
-
-const trimExcessImages = () => {
-  const selectors = [".img-top", ".img-bottom"];
-
-  selectors.forEach((selector) => {
-    const container = document.querySelector(selector);
-    const images = Array.from(container.querySelectorAll("img"));
-    const excessCount = images.length - 5;
-
-    if (excessCount > 0) {
-      images
-        .slice(0, excessCount)
-        .forEach((image) => container.removeChild(image));
-    }
   });
 };
 
