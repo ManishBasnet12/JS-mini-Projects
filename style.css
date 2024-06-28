@@ -33,7 +33,7 @@ p {
 }
 .slider-titles {
   position: absolute;
-  width: 300vw;
+  width: 200vw;
   height: 100vh;
   top: 0;
   left: calc(50vw - 16.511vw);
@@ -91,7 +91,7 @@ p {
 }
 @media (max-width: 900px) {
   .slider-titles {
-    width: 900vw;
+    width: 600vw;
     left: 0;
   }
   .title h1 {

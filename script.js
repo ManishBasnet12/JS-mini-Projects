@@ -1,6 +1,6 @@
 let currentIndex = 0;
-let totalSlides = 8;
-let totalImages = 9;
+let totalSlides = 5;
+let totalImages = 6;
 let slideImageOnClick = 100 / totalImages;
 
 const updateActiveSlide = () => {
