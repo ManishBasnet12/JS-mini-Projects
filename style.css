@@ -21,12 +21,6 @@ img {
   filter: brightness(0.65);
 }
 
-p {
-  text-decoration: none;
-  color: #fff;
-  font: 14px;
-}
-
 .slider {
   width: 100vw;
   height: 100vh;
